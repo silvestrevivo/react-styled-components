@@ -28325,8 +28325,18 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _templateObject() {
+function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;\n  text-align: center;\n  color: ", ";\n  background-color: ", ";\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  body {\n    border: 1px solid orangered;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -28337,7 +28347,9 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Title = _styledComponents.default.h1(_templateObject(), function (props) {
+var GlobalStyle = (0, _styledComponents.createGlobalStyle)(_templateObject());
+
+var Title = _styledComponents.default.h1(_templateObject2(), function (props) {
   return props.theme.primaryColor;
 }, function (props) {
   return props.theme.backgroundColor;
@@ -28380,7 +28392,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement(_styledComponents.ThemeProvider, {
+      return _react.default.createElement("div", null, _react.default.createElement(GlobalStyle, null), _react.default.createElement(_styledComponents.ThemeProvider, {
         theme: this.state.theme
       }, _react.default.createElement(Title, {
         onClick: this.handleTheme
@@ -28437,7 +28449,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51206" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58433" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

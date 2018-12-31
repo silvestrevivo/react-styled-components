@@ -5,6 +5,13 @@ import { ThemeProvider } from 'styled-components'
 import LightTheme from '../theme/light'
 import DarkTheme from '../theme/dark'
 import PasswordInput from './PasswordInput'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    border: 1px solid orangered;
+  }
+`
 
 const Title = styled.h1`
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -39,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <GlobalStyle />
         <ThemeProvider theme={this.state.theme}>
           <Title onClick={this.handleTheme}>Styled components with React</Title>
         </ThemeProvider>
