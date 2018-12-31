@@ -28251,7 +28251,39 @@ var DarkTheme = {
 };
 var _default = DarkTheme;
 exports.default = _default;
-},{}],"src/components/App.js":[function(require,module,exports) {
+},{}],"src/components/PasswordInput.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  border-radius: 3px;\n  outline: none;\n  border: 1px solid black;\n  display: block;\n  margin: 10px auto;\n  padding: 8px;\n  &:focus{\n    border-color:blue;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var PasswordInput = _styledComponents.default.input.attrs({
+  type: function type(props) {
+    return props.showPassword ? "text" : "password";
+  }
+})(_templateObject());
+
+var _default = PasswordInput;
+exports.default = _default;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28268,6 +28300,8 @@ var _Button = _interopRequireDefault(require("./Button"));
 var _light = _interopRequireDefault(require("../theme/light"));
 
 var _dark = _interopRequireDefault(require("../theme/dark"));
+
+var _PasswordInput = _interopRequireDefault(require("./PasswordInput"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28321,9 +28355,11 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      theme: _light.default
+      theme: _light.default,
+      showPassword: false
     };
     _this.handleTheme = _this.handleTheme.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleTogglePassword = _this.handleTogglePassword.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -28335,6 +28371,13 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleTogglePassword",
+    value: function handleTogglePassword() {
+      this.setState({
+        showPassword: !this.state.showPassword
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement(_styledComponents.ThemeProvider, {
@@ -28342,8 +28385,11 @@ function (_Component) {
       }, _react.default.createElement(Title, {
         onClick: this.handleTheme
       }, "Styled components with React")), _react.default.createElement(_Button.default, null, "Click"), _react.default.createElement(_Button.default, {
-        primary: true
-      }, "Click"));
+        primary: true,
+        onClick: this.handleTogglePassword
+      }, this.state.showPassword ? 'Hide password' : 'Show password'), _react.default.createElement(_PasswordInput.default, {
+        showPassword: this.state.showPassword
+      }));
     }
   }]);
 
@@ -28352,7 +28398,7 @@ function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","./Button":"src/components/Button.js","../theme/light":"src/theme/light.js","../theme/dark":"src/theme/dark.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","./Button":"src/components/Button.js","../theme/light":"src/theme/light.js","../theme/dark":"src/theme/dark.js","./PasswordInput":"src/components/PasswordInput.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

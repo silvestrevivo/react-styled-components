@@ -4,6 +4,7 @@ import Button from './Button'
 import { ThemeProvider } from 'styled-components'
 import LightTheme from '../theme/light'
 import DarkTheme from '../theme/dark'
+import PasswordInput from './PasswordInput'
 
 const Title = styled.h1`
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -16,15 +17,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      theme: LightTheme
+      theme: LightTheme,
+      showPassword: false
     }
     this.handleTheme = this.handleTheme.bind(this)
+    this.handleTogglePassword = this.handleTogglePassword.bind(this)
   }
 
   handleTheme() {
     this.setState({
       theme: this.state.theme === LightTheme ? DarkTheme : LightTheme
     })
+  }
+
+  handleTogglePassword() {
+    this.setState({
+      showPassword: !this.state.showPassword
+    });
   }
 
   render() {
@@ -34,7 +43,10 @@ class App extends Component {
           <Title onClick={this.handleTheme}>Styled components with React</Title>
         </ThemeProvider>
         <Button>Click</Button>
-        <Button primary>Click</Button>
+        <Button primary onClick={this.handleTogglePassword}>
+          {this.state.showPassword ? 'Hide password' : 'Show password'}
+        </Button>
+        <PasswordInput showPassword={this.state.showPassword} />
       </div>
     )
   }
