@@ -23,6 +23,7 @@
   "homepage": "https://github.com/silvestrevivo/react-styled-components#readme",
   "dependencies": {
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "styled-components": "^4.1.3"
   }
 }
